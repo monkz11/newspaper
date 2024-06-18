@@ -31,6 +31,12 @@ export type Revenue = {
   revenue: number;
 };
 
+export type article = {
+  image_url: string;
+  title: string;
+  description: string;
+}
+
 export type LatestInvoice = {
   id: string;
   name: string;

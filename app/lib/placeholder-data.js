@@ -1,4 +1,7 @@
 // This file contains placeholder data that you'll be replacing with real data in the Data Fetching chapter:
+
+const { title } = require("process");
+
 // https://nextjs.org/learn/dashboard-app/fetching-data
 const users = [
   {
@@ -180,9 +183,14 @@ const revenue = [
   { month: 'Dec', revenue: 4800 },
 ];
 
+const article = [
+  {image_url: 'gaza.png', title: 'gaza sitch is wanked', description: 'you can infer from title'}
+]
+
 module.exports = {
   users,
   customers,
   invoices,
   revenue,
+  article
 };

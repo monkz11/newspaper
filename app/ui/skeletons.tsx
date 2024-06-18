@@ -1,7 +1,17 @@
+
 // Loading animation
+import { lusitana } from '@/app/ui/fonts';
 const shimmer =
   'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent';
 
+
+export function HeaderSkeleton(){
+  return (
+    <div className="sticky top-0 flex h-10 shrink-0 items-center justify-center rounded-lg bg-seashell p-4 md:h-32">
+      <span className={`${lusitana.className} antialiased text-4xl`}>The people times</span>
+    </div>
+  )
+}
 export function CardSkeleton() {
   return (
     <div
