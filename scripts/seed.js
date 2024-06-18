@@ -4,6 +4,7 @@ const {
   customers,
   revenue,
   users,
+  article
 } = require('../app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
@@ -42,6 +43,41 @@ async function seedUsers(client) {
     };
   } catch (error) {
     console.error('Error seeding users:', error);
+    throw error;
+  }
+}
+
+async function seedArticle(client) {
+  try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+    // Create the "article" table if it doesn't exist
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS article (
+        image_url TEXT NOT NULL,
+        title TEXT NOT NULL,
+        description TEXT NOT NULL
+      );
+    `;
+
+    console.log(`Created "article" table`);
+
+    // Insert data into the "article" table
+    const insertedArticle = await Promise.all(
+      article.map(async (articles) => {
+        return client.sql`
+        INSERT INTO article (image_url, title, description)
+        VALUES (${articles.image_url}, ${articles.title}, ${articles.description});
+      `;
+      }),
+    );
+
+    console.log(`Seeded ${insertedArticle.length} article`);
+
+    return {
+      article: insertedArticle,
+    };
+  } catch (error) {
+    console.error('Error seeding Articles:', error);
     throw error;
   }
 }
@@ -167,6 +203,7 @@ async function main() {
   await seedCustomers(client);
   await seedInvoices(client);
   await seedRevenue(client);
+  await seedArticle(client);
 
   await client.end();
 }
