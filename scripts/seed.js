@@ -50,6 +50,7 @@ async function seedUsers(client) {
 async function seedArticle(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+    
     // Create the "article" table if it doesn't exist
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS article (
@@ -62,19 +63,21 @@ async function seedArticle(client) {
     console.log(`Created "article" table`);
 
     // Insert data into the "article" table
-    const insertedArticle = await Promise.all(
+    const insertedArticles = await Promise.all(
       article.map(async (articles) => {
-        return client.sql`
-        INSERT INTO article (image_url, title, description)
-        VALUES (${articles.image_url}, ${articles.title}, ${articles.description});
-      `;
+        const result = await client.sql`
+          INSERT INTO article (image_url, title, description)
+          VALUES (${articles.image_url}, ${articles.title}, ${articles.description})
+          RETURNING image_url, title, description;
+        `;
+        return result.rows[0];
       }),
     );
 
-    console.log(`Seeded ${insertedArticle.length} article`);
+    console.log(`Seeded ${insertedArticles.length} articles`);
 
     return {
-      article: insertedArticle,
+      articles: insertedArticles,
     };
   } catch (error) {
     console.error('Error seeding Articles:', error);
