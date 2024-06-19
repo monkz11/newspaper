@@ -56,7 +56,8 @@ async function seedArticle(client) {
       CREATE TABLE IF NOT EXISTS article (
         image_url TEXT NOT NULL,
         title TEXT NOT NULL,
-        description TEXT NOT NULL
+        description TEXT NOT NULL,
+        id TEXT NOT NULL
       );
     `;
 
@@ -64,11 +65,11 @@ async function seedArticle(client) {
 
     // Insert data into the "article" table
     const insertedArticles = await Promise.all(
-      article.map(async (articles) => {
+      article.map(async (article) => {
         const result = await client.sql`
-          INSERT INTO article (image_url, title, description)
-          VALUES (${articles.image_url}, ${articles.title}, ${articles.description})
-          RETURNING image_url, title, description;
+          INSERT INTO article (image_url, title, description, id)
+          VALUES (${article.image_url}, ${article.title}, ${article.description}, ${article.id})
+          RETURNING image_url, title, description, id;
         `;
         return result.rows[0];
       }),
@@ -77,7 +78,7 @@ async function seedArticle(client) {
     console.log(`Seeded ${insertedArticles.length} articles`);
 
     return {
-      articles: insertedArticles,
+      article: insertedArticles,
     };
   } catch (error) {
     console.error('Error seeding Articles:', error);

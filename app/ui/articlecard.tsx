@@ -1,6 +1,7 @@
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Image from 'next/image';
+import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 import { article } from '@/app/lib/definitions';
     
@@ -8,20 +9,56 @@ import { article } from '@/app/lib/definitions';
         articleInfo,
       }: {
         articleInfo: article[];
-      }) {
-        return (
-          <div className="flex w-full flex-col md:col-span-4">
+      }) {return (
+        <div>
             <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-              Latest Invoices
+              Latest Articles
             </h2>
-            <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-              {/* NOTE: comment in this code when you get to this point in the course */}
+            
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6'>
+                    {articleInfo.map((article, i) => {
+                    return (
+                        <Link href={`/articles/${article.id}`} key={article.title}>
+                            <div className='border border-4 border-black'>
+                                <div className="flex items-center">
+                                    <Image
+                                    src={article.image_url}
+                                    alt={`${article.title} article image`}
+                                    className="mr-4"
+                                    width={300}
+                                    height={200}
+                                    />
+                                </div>
+                                <div className="min-w-0">
+                                <p className="truncate text-sm font-semibold md:text-base">
+                                    {article.title}
+                                </p>
+                                <p className="hidden text-sm text-gray-500 sm:block">
+                                    {article.description}
+                                </p>
+                                </div>
+                            </div>
+                        </Link>
+                        );
+                    })}
+            </div>
+            
+        </div>
+      );
+    }
+
+        /*return (
+          <div className="flex flex-col">
+            <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+              Latest Articles
+            </h2>
+            <div className="flex">
       
               { <div className="bg-white px-6">
-                {articleInfo.map((invoice, i) => {
+                {articleInfo.map((article, i) => {
                   return (
                     <div
-                      key={invoice.title}
+                      key={article.title}
                       className={clsx(
                         'flex flex-row items-center justify-between py-4',
                         {
@@ -30,37 +67,30 @@ import { article } from '@/app/lib/definitions';
                       )}
                     >
                       <div className="flex items-center">
-                        <Image
-                          src={invoice.image_url}
-                          alt={`${invoice.description}'s profile picture`}
-                          className="mr-4 rounded-full"
-                          width={32}
-                          height={32}
-                        />
+                            <Image
+                             src={article.image_url}
+                             alt={`${article.title} article image`}
+                             className="mr-4 rounded-full"
+                             width={32}
+                             height={32}
+                            />
                         <div className="min-w-0">
                           <p className="truncate text-sm font-semibold md:text-base">
-                            {invoice.title}
+                            {article.title}
                           </p>
                           <p className="hidden text-sm text-gray-500 sm:block">
-                            {invoice.description}
+                            {article.description}
                           </p>
                         </div>
                       </div>
                       <p
                         className={`${lusitana.className} truncate text-sm font-medium md:text-base`}
                       >
-                        {invoice.title}
                       </p>
                     </div>
                   );
                 })}
               </div> }
-              <div className="flex items-center pb-2 pt-6">
-                <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-                <h3 className="ml-2 text-sm text-gray-500 ">Updated just now</h3>
-              </div>
             </div>
-          </div>
-        );
-      }
+          </div> */
   
