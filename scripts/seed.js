@@ -50,6 +50,8 @@ async function seedUsers(client) {
 async function seedArticle(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+    await client.sql`DROP TABLE IF EXISTS article`;
     
     // Create the "article" table if it doesn't exist
     const createTable = await client.sql`
