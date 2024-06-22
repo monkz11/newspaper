@@ -184,9 +184,9 @@ const revenue = [
 ];
 
 const article = [
-  {image_url: '/gaza.png', title: 'gaza sitch is wanked', description: 'you can infer from title', id: '4678'},
-  {image_url: '/gaza.png', title: 'gaza sitch is wanked 1', description: 'you can infer from title 1', id: '4679'},
-  {image_url: '/gaza.png', title: 'gaza sitch is wanked 2', description: 'you can infer from title 2', id: '4690'},
+  {image_url: '/gaza.png', title: 'gaza sitch is wanked', description: 'you can infer from title', id: '4678', content: 'testing'},
+  {image_url: '/gaza.png', title: 'gaza sitch is wanked 1', description: 'you can infer from title 1', id: '4679', content: 'testing'},
+  {image_url: '/gaza.png', title: 'gaza sitch is wanked 2', description: 'you can infer from title 2', id: '4690', content: 'testing'},
 ]
 
 module.exports = {

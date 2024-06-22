@@ -36,6 +36,7 @@ export type article = {
   title: string;
   description: string;
   id: string;
+  content: string;
 }
 
 export type LatestInvoice = {

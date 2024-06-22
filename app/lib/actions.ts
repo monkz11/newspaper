@@ -9,21 +9,23 @@ const FormSchema = z.object({
     title: z.string(),
     description: z.string(),
     id: z.string(),
+    content: z.string()
 });
  
 const CreateArticle = FormSchema;
  
 export async function createArticle(formData: FormData) {
-    const { image_url, title, description, id } = CreateArticle.parse({
+    const { image_url, title, description, id, content } = CreateArticle.parse({
       id: formData.get('id'),
       title: formData.get('title'),
       description: formData.get('description'),
-      image_url: formData.get('image_url')
+      image_url: formData.get('image_url'),
+      content: formData.get('content')
     });
 
     await sql`
-    INSERT INTO article (image_url, title, description, id)
-    VALUES (${image_url}, ${title}, ${description}, ${id})
+    INSERT INTO article (image_url, title, description, id, content)
+    VALUES (${image_url}, ${title}, ${description}, ${id}, ${content})
   `;
 
   revalidatePath('/');
