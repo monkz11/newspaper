@@ -1,10 +1,12 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
 import { HeaderSkeleton } from '../ui/skeletons';
+import Navbar from '../ui/navbar';
  
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-       <HeaderSkeleton />;
+       {/*<HeaderSkeleton />;*/}
+        <Navbar />
       <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
     </div>
     
