@@ -184,7 +184,7 @@ const revenue = [
 ];
 
 const article = [
-  {image_url: '/gaza.png', title: 'gaza sitch is wanked', description: 'you can infer from title', id: '4678', content: 'testing'},
+  {image_url: 'https://mlpqxinfrnomb00o.public.blob.vercel-storage.com/105604363-1547570907444gettyimages-1067412622-0EOvH9BiUJSPBttf4ItIYdxfp5iKJF.jpg', title: 'gaza sitch is wanked', description: 'you can infer from title', id: '4678', content: 'testing'},
   {image_url: '/gaza.png', title: 'gaza sitch is wanked 1', description: 'you can infer from title 1', id: '4679', content: 'testing'},
   {image_url: '/gaza.png', title: 'gaza sitch is wanked 2', description: 'you can infer from title 2', id: '4690', content: 'testing'},
 ]

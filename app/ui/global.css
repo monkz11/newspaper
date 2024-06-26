@@ -16,3 +16,104 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center; /* Center the cards */
+}
+
+.card {
+  width: calc(100% - 16px); /* Three cards per row with a gap */
+  max-width: 400px; /* Optional: set a max width for the card */
+  margin: 0 auto;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+  border-radius: 8px; /* Optional: round the corners */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-wrapper {
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  position: relative;
+}
+
+.custom-image-class {
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-big {
+  width: 100%; /* Three cards per row with a gap */
+  max-width: 650px; /* Optional: set a max width for the card */
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+  border-radius: 8px; /* Optional: round the corners */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-wrapper-1 {
+  width: 100%;
+  position: relative;
+}
+
+.card-mid-l{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+  margin-right: 8px;
+}
+
+.card-mid-t {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.image {
+  grid-row: 1 / 2; /* Image stays in the first row */
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.description {
+  grid-column: 1 / -1; /* Description spans both columns */
+  margin-top: 16px; /* Add margin to separate the description from the title and image */
+}
+
+.card-mid-b{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+  display: flex;
+  flex-direction: column;
+}
+
+.article-content p{
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+
