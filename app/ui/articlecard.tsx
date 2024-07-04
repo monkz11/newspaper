@@ -5,8 +5,10 @@ import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 import { article } from '@/app/lib/definitions';
 import { sql } from '@vercel/postgres';
+import ResponsiveCarousel from './carousel';
+import { fetchArticle } from '../lib/data';
     
-    export default async function ArticleCard({
+export default async function ArticleCard({
         articleInfo,
       }: {
         articleInfo: article[];
@@ -15,6 +17,8 @@ import { sql } from '@vercel/postgres';
         const data_world = await sql<article>`SELECT * FROM article WHERE content_type = 'world';`;
         const data_local = await sql<article>`SELECT * FROM article WHERE content_type = 'local';`;
         const data_torah = await sql<article>`SELECT * FROM article WHERE content_type = 'torah';`;
+        const article = await fetchArticle();
+
         return (
         <div>
             <div>
@@ -29,7 +33,7 @@ import { sql } from '@vercel/postgres';
                 
                 <div className='grid md:grid-cols-2 pt-2'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 pl-8 pr-8'>
-                    {articleInfo.map((article, i) => (
+                    {articleInfo.map((article) => (
                         <Link href={`/articles/${article.id}`} key={article.title}>
                         <div className='card min-h-full shadow-lg hover:scale-102 hover:shadow-2xl border rounded-md'>
                             <div className="image-wrapper">
@@ -140,32 +144,13 @@ import { sql } from '@vercel/postgres';
 
             <div id="world">
                 <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-                    World
+                    world
                 </h2>
                 <div className='flex flex-row'>
-                    {data_world.rows.map((article, i) => (
-                    <Link href={`/articles/${article.id}`} key={article.title}>
-                        <div className='card min-h-full shadow-lg hover:scale-102 hover:shadow-2xl border rounded-md'>
-                            <div className="image-wrapper">
-                                <Image
-                                    src={article.image_url}
-                                    alt={`${article.title} article image`}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="custom-image-class"
-                                />
-                            </div>
-                                <h3 className={`text-left mt-4 mb-4`}>
-                                    {article.title}
-                                </h3>
-                                {/*<p className={`${lusitana.className} text-left hidden text-sm text-gray-500 sm:block`}>
-                                    {article.description}
-                                </p>*/}
-                        </div>
-                    </Link>
-                    ))}
+                    <ResponsiveCarousel articleInfo={article} data_world={data_world} />
                 </div>
             </div>
+
 
             <hr className='mt-8 mb-8'/>
 
@@ -174,27 +159,7 @@ import { sql } from '@vercel/postgres';
                     Local
                 </h2>
                 <div className='flex flex-row'>
-                    {data_local.rows.map((article, i) => (
-                    <Link href={`/articles/${article.id}`} key={article.title}>
-                        <div className='card min-h-full shadow-lg hover:scale-102 hover:shadow-2xl border rounded-md'>
-                            <div className="image-wrapper">
-                                <Image
-                                    src={article.image_url}
-                                    alt={`${article.title} article image`}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="custom-image-class"
-                                />
-                            </div>
-                                <h3 className={`text-left mt-4 mb-4`}>
-                                    {article.title}
-                                </h3>
-                                {/*<p className={`${lusitana.className} text-left hidden text-sm text-gray-500 sm:block`}>
-                                    {article.description}
-                                </p>*/}
-                        </div>
-                    </Link>
-                    ))}
+                    <ResponsiveCarousel articleInfo={article} data_world={data_local} />
                 </div>
             </div>
 
@@ -205,27 +170,7 @@ import { sql } from '@vercel/postgres';
                     Torah
                 </h2>
                 <div className='flex flex-row'>
-                    {data_torah.rows.map((article, i) => (
-                    <Link href={`/articles/${article.id}`} key={article.title}>
-                        <div className='card min-h-full shadow-lg hover:scale-102 hover:shadow-2xl border rounded-md'>
-                            <div className="image-wrapper">
-                                <Image
-                                    src={article.image_url}
-                                    alt={`${article.title} article image`}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="custom-image-class"
-                                />
-                            </div>
-                                <h3 className={`text-left mt-4 mb-4`}>
-                                    {article.title}
-                                </h3>
-                                {/*<p className={`${lusitana.className} text-left hidden text-sm text-gray-500 sm:block`}>
-                                    {article.description}
-                                </p>*/}
-                        </div>
-                    </Link>
-                    ))}
+                    <ResponsiveCarousel articleInfo={article} data_world={data_torah} />
                 </div>
             </div>
         </div>

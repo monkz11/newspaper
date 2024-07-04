@@ -1,4 +1,4 @@
-import { sql } from '@vercel/postgres';
+import { QueryResult, QueryResultRow, sql } from '@vercel/postgres';
 import { unstable_noStore as noStore } from 'next/cache';
 import {
   CustomerField,
@@ -57,6 +57,25 @@ export async function fetchArticle() {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch article data.');
+  }
+}
+
+export default async function handler(req: { query: { query: any; page: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { rows?: QueryResult<QueryResultRow>; error?: string; }): void; new(): any; }; }; }) {
+  const { query, page } = req.query;
+  const ITEMS_PER_PAGE = 4;
+  const offset = (page - 1) * ITEMS_PER_PAGE;
+
+  try {
+    const articles = await sql`
+      SELECT * FROM article
+      WHERE title LIKE ${`%${query}%`}
+      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset};
+    `;
+
+    res.status(200).json({ rows: articles });
+  } catch (error) {
+    console.error('Database Error:', error);
+    res.status(500).json({ error: 'Failed to fetch articles.' });
   }
 }
 

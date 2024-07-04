@@ -10,6 +10,7 @@ import { Card } from '@/app/ui/dashboard/cards';
 import ArticleCard from "@/app/ui/articlecard"
 import DropdownMenu from './ui/DropdownMenu';
 import Navbar from './ui/navbar';
+import Bottom from './ui/bottom-nav';
 
 export default async function Page() {
   const article = await fetchArticle();
@@ -17,9 +18,10 @@ export default async function Page() {
   return (
     <main>
       <Navbar />
-      <div className="flex bg-seashell min-h-screen flex-col p-6">
+      <div className="flex bg-seashell min-h-screen flex-col p-6 pb-24">
         { <ArticleCard articleInfo={article} />}
       </div>
+      <Bottom/>
     </main>
   );
 }
