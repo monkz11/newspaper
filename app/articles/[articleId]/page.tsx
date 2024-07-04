@@ -25,27 +25,26 @@ export default async function Page({
         <main>
         <Navbar />
         {data.rows.map((article, i) => (
-    <div key={article.title} className='bg-seashell pb-28 flex justify-center items-center pt-16'>
-        <div className="text-center"> 
-            <h1 className={`${lusitana.className} text-6xl mb-4 pb-4`}>{article.title}</h1>
-            <p className={`${lusitana.className} mb-4 pb-8 font-light`}>{article.description}</p>
+        <div key={article.title} className='bg-seashell pb-28 flex justify-center items-center pt-16'>
+            <div className="text-center"> 
+                <h1 className={`${lusitana.className} text-6xl mb-4 pb-4 pl-32 pr-32`}>{article.title}</h1>
+                <p className={`${lusitana.className} mb-4 pb-8 font-light`}>{article.description}</p>
 
-            <div className="flex justify-center items-center">
-                <Image
-                    src={article.image_url}
-                    alt={`${article.title} article image`}
-                    className="mr-4 object-center"
-                    width={600}
-                    height={400}
-                />
-            </div>
+                <div className="flex justify-center items-center">
+                    <Image
+                        src={article.image_url}
+                        alt={`${article.title} article image`}
+                        className="mr-4 object-center"
+                        width={600}
+                        height={400}
+                    />
+                </div>
 
-            <div className='article-content max-w-screen-lg text-left mx-auto w-1/2'>
-                {/* Use `mx-auto` to center the content horizontally */}
-                <div className={`${lusitana.className} max-w-4 mb-4 text-center`} dangerouslySetInnerHTML={{ __html: article.content }} />
+                <div className='article-content max-w-screen-lg text-left mx-auto w-1/2'>
+                    <div className={`${lusitana.className} max-w-4 mb-4 text-center`} dangerouslySetInnerHTML={{ __html: article.content }} />
+                </div>
             </div>
         </div>
-    </div>
 ))}
     </main>
 )

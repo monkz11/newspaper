@@ -184,9 +184,13 @@ const revenue = [
 ];
 
 const article = [
-  {image_url: 'https://mlpqxinfrnomb00o.public.blob.vercel-storage.com/105604363-1547570907444gettyimages-1067412622-0EOvH9BiUJSPBttf4ItIYdxfp5iKJF.jpg', title: 'gaza sitch is wanked', description: 'you can infer from title', id: '4678', content: 'testing'},
-  {image_url: '/gaza.png', title: 'gaza sitch is wanked 1', description: 'you can infer from title 1', id: '4679', content: 'testing'},
-  {image_url: '/gaza.png', title: 'gaza sitch is wanked 2', description: 'you can infer from title 2', id: '4690', content: 'testing'},
+  {image_url: 'https://mlpqxinfrnomb00o.public.blob.vercel-storage.com/105604363-1547570907444gettyimages-1067412622-0EOvH9BiUJSPBttf4ItIYdxfp5iKJF.jpg', title: 'Protest erupt in france against the far right', description: 'Recent eruptions in paris as groups from the far left to center protest the FN', id: '4678', content: 'testing', content_type: 'world'},
+  {image_url: '/gaza.png', title: 'Protest in jerusalem as locals morn palestinian deaths', description: 'you can infer from title 1', id: '4679', content: 'testing', content_type: 'world'},
+  {image_url: 'https://mlpqxinfrnomb00o.public.blob.vercel-storage.com/Emmanuel-Macron-2017-IXgMHsS0R9SPpFyjflYIdxcwJ2DP4C.webp', title: 'Insiders claim emmanuel macron regrets calling for election', description: 'Insiders claim that emmanuel macron has recognsied a miscalculation in calling for a general election', id: '4690', content: 'testing', content_type: 'local'},
+  {image_url: 'https://mlpqxinfrnomb00o.public.blob.vercel-storage.com/economy-planet-jHwCilKF3JYJr89eojg46AXLuiCVvl.jpg', title: 'New report from the imf shows inflation dropping to 4% globally', description: 'you can infer from title 2', id: '4691', content: 'testing', content_type: 'local'},
+  {image_url: 'https://mlpqxinfrnomb00o.public.blob.vercel-storage.com/_119168866_gettyimages-1204741868-JI5sEoAtzDOqPeLvoXNxYi23p6SMLz.jpg', title: 'How the Taliban took over Afghanistans mines', description: 'you can infer from title 2', id: '4692', content: 'testing', content_type: 'world'},
+  {image_url: 'https://mlpqxinfrnomb00o.public.blob.vercel-storage.com/762f7670-33f9-11ef-bdc5-41d7421c2adf-jolsKrFEGdiWiPpxlnmcBHTwrbPDB6.jpg', title: 'USA presidential debates, what the pollsters predicts', description: 'you can infer from title 2', id: '4693', content: 'testing', content_type: 'torah'},
+  {image_url: 'https://mlpqxinfrnomb00o.public.blob.vercel-storage.com/skynews-bolivia-coup_6592009-xFqrFLgBixCL6KlfncvzgwtH2KImwU.jpg', title: 'Coup detat in bolivia circumvented by president', description: 'you can infer from title 2', id: '4694', content: 'testing', content_type: 'torah'},
 ]
 
 module.exports = {

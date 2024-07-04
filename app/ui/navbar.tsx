@@ -74,18 +74,23 @@ const Navbar: React.FC = () => {
             </Link>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
-            <Link href="/world" passHref>
+            <Link href="/articles" passHref>
+              search
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleMenuClose}>
+            <Link href="#world" passHref>
               World
             </Link>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
-            <Link href="/local" passHref>
+            <Link href="#local" passHref>
               Local
             </Link>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
-            <Link href="/dashboard" passHref>
-              dashboard
+            <Link href="#torah" passHref>
+              Torah
             </Link>
           </MenuItem>
         </Menu>
