@@ -15,7 +15,7 @@ export default async function ArticleCard({
       }) 
       {
         const data_world = await sql<article>`SELECT * FROM article WHERE content_type = 'world';`;
-        const data_local = await sql<article>`SELECT * FROM article WHERE content_type = 'local';`;
+        const data_montreal = await sql<article>`SELECT * FROM article WHERE content_type = 'Montreal';`;
         const data_torah = await sql<article>`SELECT * FROM article WHERE content_type = 'torah';`;
         const article = await fetchArticle();
 
@@ -89,9 +89,9 @@ export default async function ArticleCard({
                                         width={700}
                                         height={200}
                                     />
-                                    <h3 className="text-lg font-medium mb-2">Additional Section Title</h3>
+                                    <h3 className="text-lg font-medium mb-2">Post US debate polls</h3>
                                     <p className="text-sm text-gray-600">
-                                        This is the content of the new section that appears below the large card on the right. You can add more paragraphs, images, or any other content here.
+                                        Pollsters predictions for the upcoming US election, how they have changed since the debate.
                                     </p>
                                 </Link>
                             </div>
@@ -142,24 +142,12 @@ export default async function ArticleCard({
 
             <hr className='mt-8 mb-8'/>
 
-            <div id="world">
-                <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-                    world
-                </h2>
-                <div className='flex flex-row'>
-                    <ResponsiveCarousel articleInfo={article} data_world={data_world} />
-                </div>
-            </div>
-
-
-            <hr className='mt-8 mb-8'/>
-
             <div id="local">
                 <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-                    Local
+                    Montreal
                 </h2>
                 <div className='flex flex-row'>
-                    <ResponsiveCarousel articleInfo={article} data_world={data_local} />
+                    <ResponsiveCarousel articleInfo={article} data_world={data_montreal} />
                 </div>
             </div>
 
@@ -167,12 +155,57 @@ export default async function ArticleCard({
 
             <div id="torah">
                 <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-                    Torah
+                    Dvar
                 </h2>
                 <div className='flex flex-row'>
                     <ResponsiveCarousel articleInfo={article} data_world={data_torah} />
                 </div>
             </div>
+
+            <hr className='mt-8 mb-8'/>
+
+            <div id="world">
+                <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+                    Canada
+                </h2>
+                <div className='flex flex-row'>
+                    <ResponsiveCarousel articleInfo={article} data_world={data_world} />
+                </div>
+            </div>
+
+            <hr className='mt-8 mb-8'/>
+
+            <div id="torah">
+                <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+                    Events
+                </h2>
+                <div className='flex flex-row'>
+                    <ResponsiveCarousel articleInfo={article} data_world={data_torah} />
+                </div>
+            </div>
+
+            <hr className='mt-8 mb-8'/>
+
+            <div id="torah">
+                <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+                    Culture
+                </h2>
+                <div className='flex flex-row'>
+                    <ResponsiveCarousel articleInfo={article} data_world={data_torah} />
+                </div>
+            </div>
+
+            <hr className='mt-8 mb-8'/>
+
+            <div id="torah">
+                <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+                    profiles
+                </h2>
+                <div className='flex flex-row'>
+                    <ResponsiveCarousel articleInfo={article} data_world={data_torah} />
+                </div>
+            </div>
+
         </div>
       );
     }

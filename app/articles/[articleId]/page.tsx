@@ -29,19 +29,21 @@ export default async function Page({
             <div className="text-center"> 
                 <h1 className={`${lusitana.className} text-6xl mb-4 pb-4 pl-32 pr-32`}>{article.title}</h1>
                 <p className={`${lusitana.className} mb-4 pb-8 font-light`}>{article.description}</p>
-
-                <div className="flex justify-center items-center">
-                    <Image
-                        src={article.image_url}
-                        alt={`${article.title} article image`}
-                        className="mr-4 object-center"
-                        width={600}
-                        height={400}
-                    />
+    
+                <div>
+                    <div className="flex justify-center items-center">
+                        <Image
+                            src={article.image_url}
+                            alt={`${article.title} article image`}
+                            className="mr-4 object-center"
+                            width={600}
+                            height={400}
+                        />
+                    </div>
                 </div>
 
-                <div className='article-content max-w-screen-lg text-left mx-auto w-1/2'>
-                    <div className={`${lusitana.className} max-w-4 mb-4 text-center`} dangerouslySetInnerHTML={{ __html: article.content }} />
+                <div className='article-content max-w-screen-lg text-left mx-16 mt-16'>
+                    <div className={`${lusitana.className} max-w-4 mb-8 ml-16 mr-16 mt-24 text-left text-lg`} dangerouslySetInnerHTML={{ __html: article.content }} />
                 </div>
             </div>
         </div>

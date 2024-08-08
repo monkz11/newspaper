@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h4" component="div" sx={{ flexGrow: 1, textAlign: 'center', color: 'black' , fontFamily: 'lusitana'}}>
-          The People Times
+          McGill Jewish
         </Typography>
         <IconButton
           edge="end"
