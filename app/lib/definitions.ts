@@ -39,6 +39,7 @@ export type article = {
   content: string;
   content_type: string;
   article_author: string;
+  author_id: string;
 }
 
 export type LatestInvoice = {

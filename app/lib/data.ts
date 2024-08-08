@@ -195,6 +195,28 @@ export async function fetchFilteredArticles(
   }
 }
 
+export async function fetchFilteredArticlesAuthor(
+  query: string,
+  currentPage: number,
+) {
+  noStore();
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+
+  try {
+    const article = await sql<article>`
+    SELECT * FROM article
+    WHERE author_id LIKE ${`%${query}%`}; 
+    `;
+
+    console.log('SQL Query:', article); 
+
+    return article.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
 export async function fetchInvoicesPages(query: string) {
   noStore();
   try {

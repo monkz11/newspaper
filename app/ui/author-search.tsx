@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
 import InvoiceStatus from '@/app/ui/invoices/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-import { fetchFilteredArticles } from '@/app/lib/data';
+import { fetchFilteredArticles, fetchFilteredArticlesAuthor } from '@/app/lib/data';
 import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 
@@ -13,7 +13,7 @@ export default async function ArticleTable({
   query: string;
   currentPage: number;
 }) {
-  const articles = await fetchFilteredArticles(query, currentPage);
+  const articles = await fetchFilteredArticlesAuthor(query, currentPage);
 
   return (
     <div className='pl-64 pr-64'>

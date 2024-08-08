@@ -62,7 +62,8 @@ async function seedArticle(client) {
         id TEXT NOT NULL,
         content TEXT NOT NULL,
         content_type TEXT NOT NULL,
-        article_author TEXT NOT NULL
+        article_author TEXT NOT NULL,
+        author_id TEXT NOT NULL
       );
     `;
 
@@ -72,9 +73,9 @@ async function seedArticle(client) {
     const insertedArticles = await Promise.all(
       article.map(async (article) => {
         const result = await client.sql`
-          INSERT INTO article (image_url, title, description, id, content, content_type, article_author)
-          VALUES (${article.image_url}, ${article.title}, ${article.description}, ${article.id}, ${article.content}, ${article.content_type}, ${article.article_author})
-          RETURNING image_url, title, description, id, content, content_type, article_author;
+          INSERT INTO article (image_url, title, description, id, content, content_type, article_author, author_id)
+          VALUES (${article.image_url}, ${article.title}, ${article.description}, ${article.id}, ${article.content}, ${article.content_type}, ${article.article_author}, ${article.author_id})
+          RETURNING image_url, title, description, id, content, content_type, article_author, author_id;
         `;
         return result.rows[0];
       }),
